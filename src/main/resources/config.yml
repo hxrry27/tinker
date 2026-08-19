@@ -1,0 +1,137 @@
+# ===============================================
+# ████████╗██╗███╗   ██╗██╗  ██╗███████╗██████╗ 
+# ╚══██╔══╝██║████╗  ██║██║ ██╔╝██╔════╝██╔══██╗
+#    ██║   ██║██╔██╗ ██║█████╔╝ █████╗  ██████╔╝
+#    ██║   ██║██║╚██╗██║██╔═██╗ ██╔══╝  ██╔══██╗
+#    ██║   ██║██║ ╚████║██║  ██╗███████╗██║  ██║
+#    ╚═╝   ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+# ===============================================
+
+# tinker changes specifically non functional block states: the cosmetic bits
+# that creative builders love to utilise, but struggle to recreate in survival
+
+# every feature is permission-gated:
+#    tinker.use     - the tinker tool
+#    tinker.reload  - /tinker reload
+
+# tinker mode is turned on with the CLIENT MOD's keybind - there is no command for it, so the
+# mod is required. it is per-player, in memory only, and resets on relog. get the mod!!!
+
+# ===============================================
+#                  MAIN CONFIG
+# ===============================================
+
+# by default the keybind alone puts you in tinker mode and any held item works
+
+# set require-item: true to also demand the item below, so tinkering needs the keybind AND
+# that item in hand. useful if your builders want a deliberate second catch or for it to feel
+# *super* vanilla or something idk
+
+# traditional minecraft namespacing accepted, google if unsure
+tool:
+  require-item: false
+  item: minecraft:golden_axe
+
+
+# this is a whitelist, not a blacklist. if something is missing, it will not be tinkerable
+allowlist:
+
+  # corner shapes: STRAIGHT / INNER_LEFT / INNER_RIGHT / OUTER_LEFT / OUTER_RIGHT
+  stairs:
+    shape: true
+
+  trapdoors:
+    open: true
+
+  doors:
+    open: true
+    hinge: true
+
+  fence_gates:
+    open: true
+
+  # this covers fences, glass panes, iron bars
+  connecting:
+    north: true
+    east: true
+    south: true
+    west: true
+    up: true
+    down: true
+
+  # each side cycles: NONE / LOW / TALL
+  walls:
+    north: true
+    east: true
+    south: true
+    west: true
+    up: true # refers to the center post
+
+  # only non redstone blocks, purely cosmetic, for furnaces to look lit etc.
+  lit_blocks:
+    lit: true
+
+  barrels:
+    open: true
+
+
+  # please note, all of these can be uncommented to be enabled, they are supported
+  # but they are NOT ADVISED 
+  # you will run into dupes, bugs, weird situations and other probably unforseen issues
+  # they should be fairly self explanatory
+  
+  # crops:
+  #   age: true
+  # composters:
+  #   level: true
+  # cauldrons:
+  #   level: true
+  # beehives:
+  #   honey_level: true
+  # candles:
+  #   count: true
+  # sea_pickles:
+  #   count: true
+  # snow:
+  #   layers: true
+  # turtle_eggs:
+  #   count: true
+  # respawn_anchors:
+  #   charges: true
+  # pistons:
+  #   extended: true
+  # redstone:
+  #   powered: true
+  #   power: true
+  #   mode: true
+  #   delay: true
+
+
+# ===============================================
+#                    MESSAGES
+# ===============================================
+
+# mini message format
+# placeholders include: <block>, <property>, <value>
+
+# selected / cycled / not-editable are sent to the ACTION BAR 
+# the rest go to player chat, prefixed with `prefix`
+# =============================================================================
+messages:
+  prefix: "<gray>[</gray><aqua>tinker</aqua><gray>]</gray> "
+
+  # left-click: a property was selected
+  selected: "<gray><block></gray> <dark_gray>></dark_gray> <aqua><property></aqua> <dark_gray>(</dark_gray><white><value></white><dark_gray>)</dark_gray>"
+
+  # right-click: a property's value was changed
+  cycled: "<gray><block></gray> <dark_gray>></dark_gray> <aqua><property></aqua><gray>:</gray> <white><value></white>"
+
+  # the block has nothing editable in the current allowlist
+  not-editable: "<red><block> has nothing to tinker</red>"
+
+
+  reloaded: "<green>Config reloaded.</green> <gray>All player sessions were reset</gray>"
+  reload-failed: "<red>Reload failed - check the server console</red>"
+
+  no-permission: "<red>You don't have permission to do that</red>"
+  players-only: "<red>That has to be run by a player</red>"
