@@ -5,7 +5,7 @@ plugins {
 group = "dev.hxrry"
 version = "1.0.0"
 
-val paperApiVersion = "26.2.build.67-beta"
+val paperApiVersion = "26.3.build.41-alpha"
 
 repositories {
     mavenCentral()

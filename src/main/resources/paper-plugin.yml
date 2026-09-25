@@ -1,7 +1,7 @@
 name: tinker
 version: '${version}'
 main: dev.hxrry.tinker.TinkerPlugin
-api-version: "26.2"
+api-version: "26.3"
 authors: [hxrry]
 description: survival-safe, allowlisted, cosmetic block-state editing
 website: https://modrinth.com/plugin/tinker
